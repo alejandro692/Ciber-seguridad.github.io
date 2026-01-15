@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información - Que son los riesgos en internet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background - optimized */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+            z-index: -1;
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Floating particles - optimized */
+        .particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: rgba(139, 92, 246, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            will-change: transform, opacity;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            color: #c7d2fe;
+        }
+
+        article {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            padding: 30px 25px;
+            margin-bottom: 30px;
+        }
+
+        .warning-banner {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(220, 38, 38, 0.2) 100%);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fecaca;
+            padding: 25px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .warning-banner h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #fee2e2;
+        }
+
+        .warning-banner p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .content-block {
+            margin: 30px 0;
+            padding: 25px 20px;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .content-block h2 {
+            color: #c7d2fe;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            font-weight: 700;
+        }
+
+        .content-block h3 {
+            color: #f9a8d4;
+            margin: 20px 0 15px;
+            font-size: 1.3em;
+            font-weight: 600;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .content-block h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: #ec4899;
+            border-radius: 50%;
+        }
+
+        .content-block p {
+            line-height: 1.6;
+            font-size: 1em;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+            text-align: justify;
+        }
+
+        dl {
+            margin: 15px 0 15px 15px;
+        }
+
+        dt {
+            margin: 12px 0 8px;
+            line-height: 1.6;
+            font-size: 1em;
+            color: #a5b4fc;
+            font-weight: 600;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        dt::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #8b5cf6;
+        }
+
+        dd {
+            margin-left: 20px;
+            color: #94a3b8;
+            line-height: 1.6;
+            font-size: 0.9em;
+        }
+
+        .media-container {
+            margin: 30px 0;
+            padding: 25px 20px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 15px;
+        }
+
+        .media-container h3 {
+            color: #e0e7ff;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            text-align: center;
+        }
+
+        .video-frame {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .stats-panel {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .stats-panel h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #a7f3d0;
+        }
+
+        .stats-panel p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #d1fae5;
+        }
+
+        .stats-panel p::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-size: 1.1em;
+            color: #34d399;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            padding: 25px 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+
+        .highlight-box strong {
+            color: #fde68a;
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box p {
+            color: #fef3c7;
+            margin-top: 10px;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px 20px;
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        nav a {
+            display: block;
+            margin: 10px 0;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1em;
+            transition: transform 0.3s ease;
+        }
+
+        nav a:active {
+            transform: scale(0.98);
+        }
+
+        /* Scroll animations optimized */
+        .fade-in {
+            opacity: 1;
+        }
+
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            main {
+                padding: 40px 20px;
+            }
+
+            header {
+                padding: 60px 40px;
+                border-radius: 25px;
+                margin-bottom: 40px;
+            }
+
+            header h1 {
+                font-size: 2.8em;
+                margin-bottom: 20px;
+            }
+
+            header p {
+                font-size: 1.3em;
+            }
+
+            article {
+                padding: 50px 40px;
+                border-radius: 25px;
+            }
+
+            .warning-banner {
+                padding: 30px;
+                border-radius: 20px;
+            }
+
+            .warning-banner h2 {
+                font-size: 1.8em;
+            }
+
+            .warning-banner p {
+                font-size: 1.2em;
+            }
+
+            .content-block {
+                padding: 35px 30px;
+                margin: 40px 0;
+                border-radius: 20px;
+            }
+
+            .content-block h2 {
+                font-size: 2em;
+            }
+
+            .content-block h3 {
+                font-size: 1.6em;
+            }
+
+            .content-block p {
+                font-size: 1.1em;
+            }
+
+            .media-container {
+                padding: 35px 30px;
+                margin: 40px 0;
+            }
+
+            .media-container h3 {
+                font-size: 1.8em;
+            }
+
+            .stats-panel {
+                padding: 35px 30px;
+                margin: 40px 0;
+            }
+
+            .stats-panel h2 {
+                font-size: 1.8em;
+            }
+
+            .highlight-box {
+                padding: 30px;
+            }
+
+            nav {
+                padding: 35px 30px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 0 15px;
+                padding: 18px 40px;
+                font-size: 1.1em;
+            }
+
+            nav a:hover {
+                transform: translateY(-3px);
+            }
+        }
+
+        /* Large desktop */
+        @media (min-width: 1024px) {
+            header h1 {
+                font-size: 3.2em;
+            }
+
+            .content-block h2 {
+                font-size: 2.3em;
+            }
+        }
+
+        /* Performance optimizations */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>🩺 Ciber Seguridad en los estudiantes de octavo basica</h1>
+            <p>Información esencial para la prevención y concientización</p>
+        </header>
+
+        <article>
+            <div class="warning-banner fade-in">
+                <h2>⚠️ Atención Importante</h2>
+                <p>Los riesgos en internet pueden ser dañinos en salud mental como emocional.</p>
+            </div>
+
+            <div class="content-block fade-in">
+                <h2>¿Qué son los Riesgos en internet?</h2>
+                <p>Los riesgos en línea son situaciones o actividades perjudiciales que ocurren en internet, afectando la seguridad, privacidad, finanzas y bienestar emocional de los usuarios, incluyendo robo de datos, estafas, acos. </p>
+                <p>Acceso a información poco fiable y falsa. Dispersión, pérdida de tiempo. Acceso de los niños a información inapropiada y nociva para su edad. Acceso a información peligrosa, inmoral, ilícita.</p>
+            </div>
+
+            <div class="content-block fade-in">
+                <h2>Principales tipos de riesgo</h2>
+                
+                <h3>1. Acoso</h3>
+                <p>El acoso se caracteriza por ser uno de los riesgos mas comunes que existen.</p>
+                <dl>
+                    <dt>Daño mental</dt>
+                    <dt>Miedo a la cercania con otras personas</dt>
+                    <dt>Desconfianza</dt>
+                    <dt>Problemas de salud</dt>
+                </dl>
+
+                <h3>2. Robo</h3>
+                <p>Este se puede dar por varios errores que puede cometer el estudiante.</p>
+                <dl>
+                    <dt>Ingreso de identidad a paginas no confiables</dt>
+                    <dt>Ingreso de pagos con tarjetas a extraños</dt>
+                    <dt>Datos personales</dt>
+                </dl>
+
+       
+            </div>
+
+            <div class="stats-panel fade-in">
+                <h2>📊 Datos Estadísticos Importantes</h2>
+                <p>En Ecuador, se estima que entre el 5-10% de estudiantes cometen este tipo de errores</p>
+                <p>El 90% de los casos comienzan entre los 12 años de edad</p>
+                <p>Solo 1 de cada 10 estudiantes que obtiene estos riesgos recibe ayuda de profesionales</p>
+                <p>La recuperación es posible con ayuda profesional adecuado y apoyo familiar</p>
+            </div>
+
+            <div class="highlight-box fade-in">
+                <strong>💚 Mensaje </strong>
+                <p>Internet permite la comunicación en tiempo real, entre personas ubicadas en distintos lugares. Internet hace posible que los usuarios accedan a diversos servicios, como el correo electrónico, la mensajería instantánea y los sitios web, con el fin de: Búsquedas. Buscar información de todo tipo. Si la sabemos utilizar podemos sacarle provecho</p>
+            </div>
+
+            <nav class="fade-in">
+                <a href="pagina4.html">➡️ Alerta y Ayuda</a>
+            </nav>
+        </article>
+    </main>
+
+    <script>
+        // Create floating particles - optimized for mobile
+        function createParticles() {
+            const particleCount = window.innerWidth < 768 ? 15 : 30;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                document.body.appendChild(particle);
+            }
+        }
+
+        // Simple particle animation without heavy CSS animations
+        function animateParticles() {
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach(particle => {
+                const x = (Math.random() - 0.5) * 20;
+                const y = (Math.random() - 0.5) * 20;
+                particle.style.transform = `translate(${x}px, ${y}px)`;
+                particle.style.opacity = Math.random() * 0.5 + 0.3;
+            });
+        }
+
+        // Initialize
+        createParticles();
+        
+        // Only animate on desktop for better performance
+        if (window.innerWidth >= 768) {
+            setInterval(animateParticles, 2000);
+        }
+
+        // Simple scroll detection without Intersection Observer for better compatibility
+        function checkScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.style.opacity = '1';
+                }
+            });
+        }
+
+        // Initial check
+        checkScroll();
+        
+        // Listen to scroll with throttling
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(checkScroll, 50);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos de Ayuda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Verdana', sans-serif;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            min-height: 100vh;
+            padding: 15px 10px;
+        }
+
+        main {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            color: #9b59b6;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        header p {
+            color: #34495e;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            animation: zoomIn 0.5s;
+        }
+
+        @keyframes zoomIn {
+            from { 
+                opacity: 0; 
+                transform: scale(0.98);
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+        }
+
+        .emergency-alert {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.4);
+            text-align: center;
+        }
+
+        .emergency-alert h2 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+
+        .emergency-alert p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .emergency-alert strong {
+            font-size: 1.3em;
+            display: block;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+        }
+
+        .info-panel {
+            margin: 25px 0;
+            padding: 25px 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 6px solid #9b59b6;
+        }
+
+        .info-panel h2 {
+            color: #9b59b6;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .info-panel h3 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin: 20px 0 15px;
+        }
+
+        .info-panel p {
+            font-size: 1em;
+            line-height: 1.7;
+            color: #34495e;
+            margin: 12px 0;
+            text-align: justify;
+        }
+
+        .info-panel dl {
+            margin: 15px 0 15px 20px;
+        }
+
+        .info-panel dt {
+            margin: 12px 0 6px;
+            font-size: 1em;
+            line-height: 1.6;
+            color: #2c3e50;
+            padding-left: 5px;
+        }
+
+        .info-panel dt strong {
+            color: #9b59b6;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+        }
+
+        .contact-box:active {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .contact-box h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .contact-box p {
+            font-size: 1em;
+            margin: 10px 0;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .contact-box strong {
+            display: block;
+            margin-top: 15px;
+            font-size: 1.2em;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .help-guide {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 5px 20px rgba(17, 153, 142, 0.4);
+        }
+
+        .help-guide h2 {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .help-guide p {
+            font-size: 1em;
+            line-height: 1.7;
+            margin: 12px 0;
+        }
+
+        .help-guide dl {
+            margin: 20px 0 20px 20px;
+        }
+
+        .help-guide dt {
+            margin: 15px 0 8px;
+            font-size: 1.1em;
+            line-height: 1.6;
+            font-weight: bold;
+        }
+
+        .help-guide dd {
+            margin-left: 15px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            padding-left: 10px;
+            border-left: 3px solid rgba(255,255,255,0.5);
+        }
+
+        .testimonial {
+            background: #fff3e0;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 6px solid #f39c12;
+            font-style: italic;
+        }
+
+        .testimonial p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .testimonial strong {
+            color: #e67e22;
+            font-size: 1em;
+            font-style: normal;
+            display: block;
+            text-align: right;
+            padding-top: 10px;
+            border-top: 1px solid #f39c12;
+        }
+
+        .school-info {
+            background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 5px 20px rgba(22, 160, 133, 0.4);
+        }
+
+        .school-info h2 {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .school-info p {
+            font-size: 1em;
+            line-height: 1.7;
+            margin: 12px 0;
+        }
+
+        .school-info dl {
+            margin: 20px 0 20px 20px;
+        }
+
+        .school-info dt {
+            margin: 12px 0;
+            font-size: 1em;
+            line-height: 1.6;
+            padding-left: 5px;
+        }
+
+        .hope-message {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 5px 20px rgba(17, 153, 142, 0.4);
+            text-align: center;
+        }
+
+        .hope-message h2 {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .hope-message p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin: 15px 0;
+        }
+
+        .hope-message strong {
+            display: block;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        nav a {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-weight: 700;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        nav a:active {
+            background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);
+        }
+
+        /* Touch-friendly improvements */
+        button, a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Ensure proper spacing for touch */
+        .contact-box,
+        .emergency-alert,
+        .info-panel,
+        .help-guide,
+        .testimonial,
+        .school-info,
+        .hope-message {
+            margin-bottom: 20px;
+            padding: 20px 15px;
+        }
+
+        /* Improve readability on small screens */
+        p, li, dt, dd {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            body {
+                padding: 25px;
+            }
+
+            header {
+                padding: 50px 40px;
+                border-radius: 20px;
+                margin-bottom: 35px;
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1.3em;
+            }
+
+            section {
+                padding: 40px 35px;
+                border-radius: 20px;
+            }
+
+            .emergency-alert,
+            .info-panel,
+            .contact-box,
+            .help-guide,
+            .testimonial,
+            .school-info,
+            .hope-message {
+                padding: 35px 30px;
+                border-radius: 15px;
+                margin-bottom: 30px;
+            }
+
+            .contact-grid {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 25px;
+            }
+
+            .contact-box {
+                flex: 1;
+                min-width: 250px;
+            }
+
+            .contact-box:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+            }
+
+            nav a {
+                display: inline-block;
+                width: auto;
+                margin: 0 15px;
+                padding: 18px 40px;
+            }
+
+            nav a:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 30px rgba(142, 68, 173, 0.5);
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1024px) {
+            main {
+                max-width: 1200px;
+            }
+
+            header h1 {
+                font-size: 2.8em;
+            }
+
+            .contact-grid {
+                gap: 30px;
+            }
+
+            .contact-box {
+                min-width: 300px;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* Ensure proper contrast */
+        @media (prefers-contrast: high) {
+            .emergency-alert,
+            .contact-box,
+            .help-guide,
+            .school-info,
+            .hope-message {
+                border: 2px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>📞 Recursos de Ayuda y Apoyo</h1>
+            <p>Información vital para obtener ayuda profesional y apoyo</p>
+        </header>
+
+        <section>
+            <div class="emergency-alert">
+                <h2>🚨 EMERGENCIA</h2>
+                <p>Si alguien está en peligro inmediato:</p>
+                <strong>📱 Llamar al 911</strong>
+                <strong>☎️ ECU 911 (Ecuador)</strong>
+                <p>La ayuda está disponible las 24 horas del día, los 7 días de la semana</p>
+            </div>
+
+            <div class="info-panel">
+                <h2>🥼 Servicios de Salud en Ecuador</h2>
+                
+                <h3>Centros de Salud Pública</h3>
+                <p>El Ministerio de Salud Pública del Ecuador ofrece servicios gratuitos en caso de haber recibido daño psicologico durante em perido de estos riesgos.</p>
+                
+                <dl>
+                    <dt>→ Centros de Salud del MSP: Atención psicológica y psiquiátrica gratuita</dt>
+                    <dt>→ Hospital Psiquiátrico Julio Endara (Quito)</dt>
+                    <dt>→ Hospital de Especialidades Dr. Abel Gilbert Pontón (Guayaquil)</dt>
+                    <dt>→ Servicios de psicología en hospitales generales</dt>
+                </dl>
+
+                <h3>Líneas de Ayuda Nacional</h3>
+                    <dt><strong>Línea 911:</strong> Atención de policias</dt>
+                    <dt><strong>DECE (Departamento de Consejería Estudiantil):</strong> Disponible en todas las instituciones educativas</dt>
+                </dl>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-box">
+                    <h3>🏫 U.E. Dolores Sucre</h3>
+                    <p>Departamento de Consejería Estudiantil (DECE)</p>
+                    <p>📍 Guayaquil, Ecuador</p>
+                    <p>☎️ Contactar al orientador escolar</p>
+                    <strong>Atención confidencial para estudiantes</strong>
+                </div>
+
+                <div class="contact-box">
+                    <h3>💚 Apoyo Psicológico</h3>
+                    <p>Psicólogos clínicos especializados en riesgos del internet</p>
+                    <p>☎️ Consultar en el centro de salud más cercano</p>
+                    <strong>Atención personalizada disponible</strong>
+                </div>
+            </div>
+
+            
+
+            <div class="school-info">
+                <h2>🎓 Recursos en la U.E. Dolores Sucre</h2>
+                <p>La institución está comprometida con la salud y bienestar de todos los estudiantes:</p>
+                <dl>
+                    <dt>→ Departamento de Consejería Estudiantil (DECE) disponible todos los días</dt>
+                    <dt>→ Charlas informativas sobre los riesgos del internet y como se los previene</dt>
+                    
+                    <dt>→ Grupos de apoyo para estudiantes</dt>
+                    <dt>→ Coordinación con centros de salud especializados</dt>
+                    <dt>→ Apoyo a familias y orientación para padres</dt>
+                    <dt>→ Ambiente escolar libre de ciber acoso</dt>
+                </dl>
+                <p><strong>Recordar:</strong> Todo lo que se comparte con el DECE es confidencial. La privacidad está protegida.</p>
+            </div>
+
+            <div class="hope-message">
+                <h2>💚 Mensaje Final</h2>
+                <p>Los riesgos son problemas serios, pero tratables.</p>
+                <p>La solucion de estos es posible con el apoyo adecuado.</p>
+                <strong>Nadie está solo. Hay personas que quieren ayudar.</strong>
+                <p>La salud y el bienestar valen la pena. La salud importa. Todos merecen estar bien.</p>
+            </div>
+
+            <nav>
+                <a href="pagina4.html">⬅️ Señales de Alerta</a>
+                <a href="pagina6.html">➡️ Contáctanos</a>
+            </nav>
+        </section>
+    </main>
+</body>
+</html>

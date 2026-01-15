@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tahoma', sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            min-height: 100vh;
+            padding: 15px 10px;
+        }
+
+        main {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        header p {
+            color: #34495e;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            animation: fadeSlide 0.5s;
+        }
+
+        @keyframes fadeSlide {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .intro-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .intro-banner h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .intro-banner p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .privacy-alert {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 6px solid #ffc107;
+            margin: 25px 0;
+        }
+
+        .privacy-alert h3 {
+            color: #856404;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .privacy-alert p {
+            color: #856404;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        form {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .field-group {
+            margin: 20px 0;
+        }
+
+        .field-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 700;
+            font-size: 1em;
+        }
+
+        .mandatory {
+            color: #e74c3c;
+            font-size: 1.2em;
+        }
+
+        .field-group input,
+        .field-group textarea,
+        .field-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.2s;
+            font-family: 'Tahoma', sans-serif;
+        }
+
+        .field-group input:focus,
+        .field-group textarea:focus,
+        .field-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .field-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .field-group select {
+            cursor: pointer;
+            height: 52px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.2em;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 700;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(17, 153, 142, 0.4);
+        }
+
+        .submit-button:active {
+            background: linear-gradient(135deg, #38ef7d 0%, #11998e 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(17, 153, 142, 0.5);
+        }
+
+        .success-notification {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin-top: 25px;
+            display: none;
+            text-align: center;
+            animation: dropDown 0.5s;
+        }
+
+        @keyframes dropDown {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .success-notification h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+
+        .success-notification p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .contact-details {
+            background: #f8f9fa;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 6px solid #e74c3c;
+        }
+
+        .contact-details h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .contact-details p {
+            color: #34495e;
+            font-size: 1em;
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        .contact-details strong {
+            color: #e74c3c;
+        }
+
+        .cards-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+            transition: all 0.3s;
+        }
+
+        .info-box:active {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(155, 89, 182, 0.5);
+        }
+
+        .info-box h4 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .info-box p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+
+        .faq-panel {
+            background: #e8f8f5;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 6px solid #16a085;
+        }
+
+        .faq-panel h3 {
+            color: #16a085;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .faq-entry {
+            margin: 20px 0;
+        }
+
+        .faq-entry h4 {
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .faq-entry p {
+            color: #555;
+            font-size: 1em;
+            line-height: 1.6;
+            padding-left: 15px;
+        }
+
+        .warning-banner {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .warning-banner h2 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+
+        .warning-banner p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        nav a {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-weight: 700;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        nav a:active {
+            background: linear-gradient(135deg, #4ca1af 0%, #2c3e50 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.4);
+        }
+
+        /* Touch-friendly improvements */
+        button, a, input, textarea, select {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Ensure proper sizing for touch */
+        input, textarea, select, .submit-button, nav a {
+            min-height: 48px;
+        }
+
+        /* Form field improvements for mobile */
+        .field-group input,
+        .field-group select {
+            font-size: 16px; /* Prevents zoom on iOS */
+        }
+
+        /* Keyboard navigation improvements */
+        input:focus, textarea:focus, select:focus {
+            outline: 3px solid #667eea;
+        }
+
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            body {
+                padding: 25px;
+            }
+
+            header {
+                padding: 50px 40px;
+                border-radius: 20px;
+                margin-bottom: 35px;
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1.3em;
+            }
+
+            section {
+                padding: 40px 35px;
+                border-radius: 20px;
+            }
+
+            .intro-banner,
+            .privacy-alert,
+            .contact-details,
+            .faq-panel,
+            .warning-banner,
+            .success-notification {
+                padding: 30px;
+                border-radius: 15px;
+                margin-bottom: 30px;
+            }
+
+            .cards-layout {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 25px;
+            }
+
+            .info-box {
+                flex: 1;
+                min-width: 200px;
+            }
+
+            .info-box:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 40px rgba(155, 89, 182, 0.6);
+            }
+
+            nav a {
+                display: inline-block;
+                width: auto;
+                margin: 0 15px;
+                padding: 18px 40px;
+            }
+
+            nav a:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 30px rgba(44, 62, 80, 0.5);
+            }
+
+            .submit-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(17, 153, 142, 0.6);
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1024px) {
+            main {
+                max-width: 1100px;
+            }
+
+            header h1 {
+                font-size: 2.8em;
+            }
+
+            .cards-layout {
+                gap: 30px;
+            }
+
+            .info-box {
+                min-width: 270px;
+            }
+
+            form {
+                max-width: 750px;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            .intro-banner,
+            .info-box,
+            .warning-banner,
+            .success-notification {
+                border: 2px solid #000;
+            }
+            
+            .mandatory {
+                font-weight: bold;
+                text-shadow: 0 0 2px #fff;
+            }
+        }
+
+        /* Improve form usability on mobile */
+        @media (max-width: 480px) {
+            .field-group input,
+            .field-group textarea,
+            .field-group select {
+                padding: 12px;
+                font-size: 16px; /* Prevents iOS zoom */
+            }
+            
+            .submit-button {
+                padding: 16px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>📧 Contáctanos</h1>
+            <p>Estamos aquí para escuchar y brindar apoyo</p>
+        </header>
+
+        <section>
+            <div class="intro-banner">
+                <h2>💚 Tu mensaje es importante</h2>
+                <p>Si hay preguntas, se necesita información adicional o se quiere compartir una experiencia, se puede completar el formulario. Todas las consultas son confidenciales y serán respondidas con respeto y profesionalismo.</p>
+            </div>
+
+            <div class="privacy-alert">
+                <h3>🔒 Confidencialidad Garantizada</h3>
+                <p>La privacidad es una prioridad. La información que se comparta será tratada con la máxima confidencialidad y solo será vista por profesionales capacitados del Departamento de Consejería Estudiantil.</p>
+            </div>
+
+            <form id="contactForm" onsubmit="enviarFormulario(event)">
+                <div class="field-group">
+                    <label>Nombre Completo: <span class="mandatory">*</span></label>
+                    <input type="text" id="nombre" required placeholder="Escriba su nombre completo">
+                </div>
+
+                <div class="field-group">
+                    <label>Correo Electrónico: <span class="mandatory">*</span></label>
+                    <input type="email" id="email" required placeholder="ejemplo@correo.com">
+                </div>
+
+                <div class="field-group">
+                    <label>Edad:</label>
+                    <input type="number" id="edad" min="10" max="99" placeholder="Su edad (opcional)">
+                </div>
+
+                <div class="field-group">
+                    <label>Relación con el tema: <span class="mandatory">*</span></label>
+                    <select id="relacion" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="estudiante">Estudiante</option>
+                        <option value="familiar">Familiar o amigo preocupado</option>
+                        <option value="docente">Docente</option>
+                        <option value="padre">Padre/Madre</option>
+                        <option value="profesional">Profesional de la salud</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="field-group">
+                    <label>Asunto: <span class="mandatory">*</span></label>
+                    <input type="text" id="asunto" required placeholder="¿Sobre qué se quiere hablar?">
+                </div>
+
+                <div class="field-group">
+                    <label>Mensaje: <span class="mandatory">*</span></label>
+                    <textarea id="mensaje" required placeholder="Escriba su mensaje aquí. Recuerde que este es un espacio seguro y confidencial..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Enviar Mensaje 📨</button>
+            </form>
+
+            <div class="success-notification" id="successAlert">
+                <h3>✅ ¡Mensaje Enviado Exitosamente!</h3>
+                <p>Gracias por contactarnos. Se ha recibido el mensaje y se pondrá en contacto lo antes posible.</p>
+                <p>Si la situación es urgente, por favor contacte directamente al DECE o llame a las líneas de emergencia.</p>
+            </div>
+
+            <div class="contact-details">
+                <h3>📍 Información de Contacto Directa</h3>
+                <p><strong>Unidad Educativa Dolores Sucre</strong></p>
+                <p><strong>📧 Email:</strong> dece.doloressucre@educacion.gob.ec</p>
+                <p><strong>📱 Teléfono:</strong> (04) XXX-XXXX</p>
+                <p><strong>🏫 Dirección:</strong> Guayaquil, Ecuador</p>
+                <p><strong>🕐 Horario de Atención DECE:</strong> Lunes a Viernes, 7:30 AM - 3:00 PM</p>
+            </div>
+
+            <div class="cards-layout">
+                <div class="info-box">
+                    <h4>🥼 Emergencias</h4>
+                    <p>ECU 911</p>
+                    <p>Línea 171</p>
+                    <p>Disponible 24/7</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>💚 DECE</h4>
+                    <p>Departamento de Consejería Estudiantil</p>
+                    <p>Atención personalizada</p>
+                    <p>100% Confidencial</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>☎️ Salud psicolgica</h4>
+                    <p>1800- Capacitacion</p>
+                    <p>(1800-72583)</p>
+                    <p>Apoyo profesional</p>
+                </div>
+            </div>
+
+            <div class="faq-panel">
+                <h3>❓ Preguntas Frecuentes</h3>
+                
+                <div class="faq-entry">
+                    <h4>¿Qué pasa después de enviar el formulario?</h4>
+                    <p>Un profesional del DECE revisará el mensaje y se pondrá en contacto en un plazo máximo de 48 horas hábiles. Si es urgente, se recomienda acudir directamente a las oficinas.</p>
+                </div>
+
+                <div class="faq-entry">
+                    <h4>¿Es realmente confidencial?</h4>
+                    <p>Sí, absolutamente. La información que se comparte solo será vista por profesionales capacitados y únicamente se compartirá con otros si es necesario para la seguridad o con consentimiento explícito.</p>
+                </div>
+
+                <div class="faq-entry">
+                    <h4>¿Se puede contactar de forma anónima?</h4>
+                    <p>Si se prefiere mantener el anonimato inicialmente, se pueden llamar las líneas de ayuda mencionadas. Sin embargo, para un seguimiento efectivo, es importante proporcionar información de contacto.</p>
+                </div>
+
+                <div class="faq-entry">
+                    <h4>¿Qué tipo de apoyo se puede recibir?</h4>
+                    <p>Se ofrece orientación psicológica, información sobre recursos de salud, apoyo emocional, coordinación con profesionales especializados y acompañamiento durante el proceso de recuperación.</p>
+                </div>
+
+                <div class="faq-entry">
+                    <h4>¿Los servicios tienen algún costo?</h4>
+                    <p>Los servicios del DECE son completamente gratuitos para todos los estudiantes de la U.E. Dolores Sucre y sus familias.</p>
+                </div>
+            </div>
+
+            <div class="warning-banner">
+                <h2>⚠️ Recordatorio Importante</h2>
+                <p>Si alguien está en peligro inmediato, no se debe esperar. Se debe llamar al 911 o acudir a la sala de emergencias más cercana. Este formulario NO es para emergencias.</p>
+            </div>
+
+            <nav>
+                <a href="index.html">🏠 Volver al Inicio</a>
+                <a href="pagina5.html">⬅️ Recursos de Ayuda</a>
+            </nav>
+        </section>
+    </main>
+
+    <script>
+        function enviarFormulario(event) {
+            event.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const relacion = document.getElementById('relacion').value;
+            const asunto = document.getElementById('asunto').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            if (!nombre || !email || !relacion || !asunto || !mensaje) {
+                alert('Por favor, complete todos los campos obligatorios marcados con *');
+                return;
+            }
+
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regexEmail.test(email)) {
+                alert('Por favor, ingrese un correo electrónico válido');
+                return;
+            }
+            
+            // Mostrar notificación
+            document.getElementById('successAlert').style.display = 'block';
+            
+            // Resetear formulario
+            document.getElementById('contactForm').reset();
+            
+            // Desplazamiento suave a la notificación
+            document.getElementById('successAlert').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+            
+            // Ocultar notificación después de 8 segundos
+            setTimeout(() => {
+                document.getElementById('successAlert').style.display = 'none';
+            }, 8000);
+            
+            // Vibrar el botón para feedback táctil (si está disponible)
+            if (navigator.vibrate) {
+                navigator.vibrate(200);
+            }
+        }
+        
+        // Mejorar experiencia en móviles
+        document.addEventListener('DOMContentLoaded', function() {
+            // Prevenir zoom en iOS al tocar inputs
+            document.addEventListener('touchstart', function() {}, {passive: true});
+            
+            // Agregar feedback táctil a los botones
+            const buttons = document.querySelectorAll('button, nav a, .info-box');
+            buttons.forEach(button => {
+                button.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.8';
+                });
+                button.addEventListener('touchend', function() {
+                    this.style.opacity = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

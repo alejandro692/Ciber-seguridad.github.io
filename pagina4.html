@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Señales y Prevención</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #050714;
+            color: #e0e0e0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Simplified background for mobile */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(239, 68, 68, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Reduced animations for mobile performance */
+        .mesh-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(239, 68, 68, 0.1) 0%, transparent 60%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+            z-index: -1;
+        }
+
+        /* Remove heavy animations on mobile */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        main {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(220, 38, 38, 0.08) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: white;
+            padding: 40px 25px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fef3c7, #fbbf24, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            color: #fecaca;
+            line-height: 1.5;
+        }
+
+        article {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(239, 68, 68, 0.4);
+            color: #fecaca;
+            padding: 25px 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-size: 1.5em;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .alert-group {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .alert-item {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 25px 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .alert-item h3 {
+            color: #fbbf24;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .alert-item dl {
+            margin-left: 0;
+        }
+
+        .alert-item dt {
+            margin: 12px 0;
+            color: #cbd5e1;
+            line-height: 1.5;
+            font-size: 1em;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .alert-item dt::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #f97316;
+            font-weight: bold;
+        }
+
+        .prevention-panel {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(37, 99, 235, 0.08) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 30px 25px;
+            border-radius: 15px;
+            margin: 35px 0;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .prevention-panel h2 {
+            color: #93c5fd;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .prevention-panel > p {
+            color: #dbeafe;
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .prevention-panel dt {
+            margin: 20px 0 8px;
+            color: #bfdbfe;
+            font-size: 1.1em;
+            font-weight: 600;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .prevention-panel dt::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+        .prevention-panel dd {
+            margin-left: 30px;
+            color: #cbd5e1;
+            line-height: 1.6;
+            font-size: 0.95em;
+            padding: 8px 0;
+        }
+
+        .media-container {
+            margin: 35px 0;
+            padding: 25px 20px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(99, 102, 241, 0.08) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .media-container h3 {
+            color: #e0e7ff;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .video-frame {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(126, 34, 206, 0.08) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            padding: 30px 25px;
+            border-radius: 15px;
+            margin: 35px 0;
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+        }
+
+        .quiz-section h3 {
+            color: #e9d5ff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .intro-text {
+            color: #ddd6fe;
+            font-size: 1em;
+            text-align: center;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .question-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .question-card h4 {
+            color: #e9d5ff;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            margin: 8px 0;
+            padding: 14px 20px;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            color: #e9d5ff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1em;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .option-btn:active {
+            background: rgba(168, 85, 247, 0.25);
+            transform: scale(0.98);
+        }
+
+        .option-btn.selected {
+            background: linear-gradient(135deg, #a855f7, #7e22ce);
+            border-color: #a855f7;
+            color: white;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            margin: 30px auto;
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #a855f7, #7e22ce);
+            border: none;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: transform 0.2s ease;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .result-box {
+            display: none;
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin-top: 25px;
+            font-size: 1em;
+            line-height: 1.6;
+            text-align: center;
+            border: 1px solid;
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .support-banner {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.08) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            padding: 30px 25px;
+            border-radius: 15px;
+            margin: 35px 0;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+            text-align: center;
+        }
+
+        .support-banner h2 {
+            color: #a7f3d0;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .support-banner p {
+            color: #d1fae5;
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        .support-banner strong {
+            color: #6ee7b7;
+            font-size: 1.1em;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px 25px;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        nav a {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: transform 0.2s ease;
+            text-align: center;
+        }
+
+        nav a:active {
+            transform: scale(0.98);
+        }
+
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            body::before {
+                animation: breathe 12s ease-in-out infinite;
+            }
+
+            @keyframes breathe {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.7; }
+            }
+
+            main {
+                max-width: 1200px;
+                padding: 40px 30px;
+            }
+
+            header {
+                padding: 70px 50px;
+                border-radius: 25px;
+                margin-bottom: 40px;
+            }
+
+            header h1 {
+                font-size: 3em;
+            }
+
+            header p {
+                font-size: 1.3em;
+            }
+
+            article {
+                padding: 50px 40px;
+                border-radius: 25px;
+            }
+
+            .section-header {
+                font-size: 2em;
+                padding: 30px;
+                border-radius: 20px;
+            }
+
+            .alert-group {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .alert-item {
+                flex: 1;
+                min-width: 300px;
+            }
+
+            .alert-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(239, 68, 68, 0.3);
+            }
+
+            .prevention-panel,
+            .quiz-section,
+            .support-banner {
+                padding: 40px 35px;
+            }
+
+            .option-btn {
+                display: inline-block;
+                width: auto;
+                margin: 10px 12px 10px 0;
+            }
+
+            .option-btn:hover {
+                background: rgba(168, 85, 247, 0.25);
+                transform: translateY(-2px);
+            }
+
+            .submit-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+            }
+
+            nav a {
+                display: inline-block;
+                width: auto;
+                margin: 0 15px;
+            }
+
+            nav a:hover {
+                transform: translateY(-3px);
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1024px) {
+            header h1 {
+                font-size: 3.5em;
+            }
+
+            .alert-group {
+                gap: 35px;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-contrast: high) {
+            .alert-item,
+            .prevention-panel,
+            .quiz-section,
+            .support-banner {
+                border-width: 2px;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        button,
+        .option-btn,
+        nav a {
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        /* Ensure text is readable on mobile */
+        p, li, dt, dd {
+            font-size: calc(1em + 0.1vw);
+            line-height: 1.6;
+        }
+
+        /* Prevent horizontal scrolling */
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="mesh-gradient"></div>
+
+    <main>
+        <header>
+            <h1>🚨 Señales de Alerta y Prevención</h1>
+            <p>Aprende a como prevenir riesgos</p>
+        </header>
+
+        <article>
+            <h2 class="section-header">⚠️ Señales de Alerta a Observar</h2>
+
+            <div class="alert-group">
+                <div class="alert-item">
+                    <h3>🔴 Que no hacer </h3>
+                    <dl>
+                        <dt>No dar tus datos</dt>
+                        <dt>No creer todo lo que ves </dt>
+                        <dt>Quedarse callado ante el ciberacoso</dt>
+                        
+                    </dl>
+                </div>
+            </div>
+            <div class="support-banner">
+                <h2>💚 Si Se Necesita Ayuda</h2>
+                <p>Si se identifican varias señales de alerta en uno mismo o en alguien cercano, es importante buscar ayuda profesional.</p>
+                <p><strong>No se está solo. La recuperación en los riesgos es posible.</strong></p>
+                <p>Se debe hablar con un adulto de confianza, orientador escolar o profesional.</p>
+            </div>
+
+            <nav>
+                <a href="pagina3.html">⬅️ Volver a Información</a>
+                <a href="pagina5.html">➡️ Recursos de Ayuda</a>
+            </nav>
+        </article>
+    </main>
+
+    <script>
+        // Quiz functionality
+        let respuestas = [0, 0, 0];
+
+        function seleccionarOpcion(elemento, valor) {
+            const pregunta = elemento.parentElement;
+            const opciones = pregunta.querySelectorAll('.option-btn');
+            const indicePregunta = Array.from(document.querySelectorAll('.question-card')).indexOf(pregunta);
+            
+            opciones.forEach(opt => opt.classList.remove('selected'));
+            elemento.classList.add('selected');
+            respuestas[indicePregunta] = valor;
+            
+            // Visual feedback
+            elemento.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                elemento.style.transform = '';
+            }, 150);
+        }
+
+        function evaluarTest() {
+            if (respuestas.includes(0)) {
+                alert('Por favor, responda todas las preguntas');
+                return;
+            }
+
+            const total = respuestas.reduce((a, b) => a + b, 0);
+            const cajaResultado = document.getElementById('resultMessage');
+            
+            let mensaje = '';
+            let colorFondo = '';
+            let colorBorde = '';
+
+            if (total <= 5) {
+                mensaje = '✅ Se tiene una relación saludable con la comida. ¡Excelente! Se debe continuar promoviendo hábitos positivos.';
+                colorFondo = 'rgba(16, 185, 129, 0.2)';
+                colorBorde = 'rgba(16, 185, 129, 0.6)';
+            } else if (total <= 8) {
+                mensaje = '⚠️ Podrían estar desarrollándose algunas preocupaciones. Es importante hablar con alguien de confianza sobre los sentimientos.';
+                colorFondo = 'rgba(251, 191, 36, 0.2)';
+                colorBorde = 'rgba(251, 191, 36, 0.6)';
+            } else {
+                mensaje = '🚨 Las respuestas sugieren que podría haber un riesgo. Se recomienda fuertemente hablar con un profesional de salud mental. Recuerde: buscar ayuda es un signo de fortaleza.';
+                colorFondo = 'rgba(239, 68, 68, 0.2)';
+                colorBorde = 'rgba(239, 68, 68, 0.6)';
+            }
+
+            cajaResultado.textContent = mensaje;
+            cajaResultado.style.display = 'block';
+            cajaResultado.style.background = colorFondo;
+            cajaResultado.style.borderColor = colorBorde;
+            cajaResultado.style.color = '#e0e0e0';
+            
+            // Smooth scroll to result on mobile
+            cajaResultado.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center',
+                inline: 'nearest'
+            });
+        }
+
+        // Touch-friendly improvements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Prevent zoom on double tap (iOS)
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function(event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+
+            // Add touch feedback for all interactive elements
+            const interactiveElements = document.querySelectorAll('button, .option-btn, nav a');
+            interactiveElements.forEach(el => {
+                el.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.8';
+                });
+                
+                el.addEventListener('touchend', function() {
+                    this.style.opacity = '';
+                });
+            });
+        });
+
+        // Handle orientation changes
+        window.addEventListener('orientationchange', function() {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
+    </script>
+</body>
+</html>
